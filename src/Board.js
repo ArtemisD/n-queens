@@ -114,9 +114,12 @@
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-
-
-
+      var n = this.get('n');
+      for (var i = 0; i < n; i++) {
+        if (this.hasColConflictAt(i)) {
+          return true;
+        }
+      }
       return false; // fixme
     },
 
