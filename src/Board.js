@@ -129,15 +129,44 @@
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
-    hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+
+
+    // this works for 3 of the 5 possibilities
+    hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow, majorDiagonalRowIndex) {
+      var counter = 0;
+      var x = majorDiagonalRowIndex || 0;
+      for (var y = majorDiagonalColumnIndexAtFirstRow; y < this.rows().length && x < this.rows().length; y++, x++) {
+        counter += this.rows()[x][y];
+      }
+      return (counter > 1);
     },
+
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      return false; // fixme
+      var rowLength = this.rows().length;
+
+      for (var x = 0; x < rowLength; x++) {
+        for (var y = 0; y < rowLength; y++) {
+          if (this.hasMajorDiagonalConflictAt(x, y)) {
+            return true;
+          }
+        }
+      }
+      return false;
+
     },
 
+    //   hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
+    //    var counter = 0;
+    //    var y = majorDiagonalColumnIndexAtFirstRow;
+    //    for(var x = 0; x < this.get("n"); x++, y++){
+    //      if(this._isInBounds(x, y)){
+    //        counter += this.rows()[x][y];
+    //      }
+    //    }
+    //    return counter > 1;
+    //  },
 
 
     // Minor Diagonals - go from top-right to bottom-left
@@ -145,7 +174,12 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+
+
+
+
+
+      return false;
     },
 
     // test if any minor diagonals on this board contain conflicts
@@ -153,7 +187,7 @@
       return false; // fixme
     }
 
-    /*--------------------  End of Helper Functions  ---------------------*/
+    /*--------------------  End of Helper Functions  ---------------------*/ //
 
 
   });
@@ -170,5 +204,12 @@
 
 
 var b = new Board({
-  n: 5
+  n: 4
 });
+
+b.togglePiece(0, 1);
+b.togglePiece(1, 2);
+b.togglePiece(2, 3);
+console.log("hmdca - 0, should be false", b.hasMajorDiagonalConflictAt(0));
+console.log("hmdca - 1, should be true", b.hasMajorDiagonalConflictAt(1));
+console.log("hANYmdc , should be true", b.hasAnyMajorDiagonalConflicts());
