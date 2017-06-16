@@ -164,7 +164,7 @@
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow, minorDiagonalRowIndex) {
       var counter = 0;
       var x = minorDiagonalRowIndex || 0;
-      for (var y = minorDiagonalColumnIndexAtFirstRow; y < this.get("n"); x--, y++) {
+      for (var y = minorDiagonalColumnIndexAtFirstRow; y < this.get('n'); x--, y++) {
         if (this._isInBounds(x, y)) {
           counter += this.rows()[x][y];
         }
