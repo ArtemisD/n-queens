@@ -210,6 +210,6 @@ var b = new Board({
 b.togglePiece(0, 1);
 b.togglePiece(1, 2);
 b.togglePiece(2, 3);
-console.log("hmdca - 0, should be false", b.hasMajorDiagonalConflictAt(0));
-console.log("hmdca - 1, should be true", b.hasMajorDiagonalConflictAt(1));
-console.log("hANYmdc , should be true", b.hasAnyMajorDiagonalConflicts());
+console.log('hmdca - 0, should be false', b.hasMajorDiagonalConflictAt(0));
+console.log('hmdca - 1, should be true', b.hasMajorDiagonalConflictAt(1));
+console.log('hANYmdc , should be true', b.hasAnyMajorDiagonalConflicts());
