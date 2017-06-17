@@ -136,7 +136,9 @@
       var counter = 0;
       var x = majorDiagonalRowIndex || 0;
       for (var y = majorDiagonalColumnIndexAtFirstRow; y < this.rows().length && x < this.rows().length; y++, x++) {
-        counter += this.rows()[x][y];
+        if (this._isInBounds(x, y)) {
+          counter += this.rows()[x][y];
+        }
       }
       return (counter > 1);
     },
@@ -164,7 +166,7 @@
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow, minorDiagonalRowIndex) {
       var counter = 0;
       var x = minorDiagonalRowIndex || 0;
-      for (var y = minorDiagonalColumnIndexAtFirstRow; y < this.get('n'); x--, y++) {
+      for (var y = minorDiagonalColumnIndexAtFirstRow; y < this.rows().length && x < this.rows().length; x++, y--) {
         if (this._isInBounds(x, y)) {
           counter += this.rows()[x][y];
         }
