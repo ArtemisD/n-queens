@@ -40,7 +40,9 @@
 
 window.findNRooksSolution = function(n) {
   //create a new board
-  var solution = new Board({n: n});
+  var solution = new Board({
+    n: n
+  });
   //recursive function
   var callback = function(row) {
     //base case: stop the search when row is equal to n
@@ -76,19 +78,19 @@ window.findNRooksSolution = function(n) {
 window.countNRooksSolutions = function(n) {
   var solutionCount = undefined; //fixme
 
-    // create a new board of zeros
+  // create a new board of zeros
 
-    // instaniate a function / sub-routine, pass in the board
+  // instaniate a function / sub-routine, pass in the board
 
-      // establish a base case that once i hit n, increase solution count
+  // establish a base case that once i hit n, increase solution count
 
-      // else iterate through columns looking for place w/o conflict
+  // else iterate through columns looking for place w/o conflict
 
-        // place piece and check for conflicts
+  // place piece and check for conflicts
 
-          // if conflict, do not toggle and continue iteration
+  // if conflict, do not toggle and continue iteration
 
-          // if not conflict then advance the...
+  // if not conflict then advance the...
 
 
 
@@ -117,7 +119,9 @@ window.countNQueensSolutions = function(n) {
 
 
 
-var b = new Board({n:4});
-b.togglePiece(0,0);
-b.togglePiece(0,1);
+var b = new Board({
+  n: 4
+});
+b.togglePiece(0, 0);
+b.togglePiece(0, 1);
 console.log(b.hasAnyRooksConflicts());
